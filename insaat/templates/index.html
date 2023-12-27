@@ -1,0 +1,76 @@
+
+
+{% extends 'layouts/base.html' %}
+{% block title %}
+    SADE MERMER | Mutfak ve Banyo Tezgahları
+{% endblock %}
+{% load static %}
+{% block content %}
+    <!-- Carousel Start -->
+    <div class="container-fluid p-0 pb-5">
+        <div class="owl-carousel header-carousel position-relative">
+            {% for slide_image in slide_images %}
+            <div class="owl-carousel-item position-relative">
+                <img class="img-fluid" src="{{ slide_image.image.url }}" alt="">
+                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(53, 53, 53, .7);">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-lg-8 text-center">
+                                <h5 class="text-white text-uppercase mb-3 animated slideInDown">{{ slide_image.h5_text | safe }}</h5>
+                                <h1 class="display-3 text-white animated slideInDown mb-4">{{ slide_image.h1_text | safe }}</h1>
+                                <p class="fs-5 fw-medium text-white mb-4 pb-2">{{ slide_image.p_text | safe }}.</p>
+                                <!-- <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read More</a> -->
+                                <a href="{% url 'freequote' %}" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Fiyat Teklifi</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- Carousel End -->
+
+
+    <!-- Feature Start -->
+    {% include 'components/features_index.html' %}
+    <!-- Feature Start -->
+
+
+
+    <!-- About Start -->
+    {% include 'components/abouts.html' %}
+    <!-- About End -->
+
+
+    <!-- Service Start -->
+    {% include 'components/services.html' %}
+    <!-- Service End -->
+
+
+    <!-- Feature Start -->
+    {% include 'components/features.html' %}
+    <!-- Feature End -->
+
+
+    <!-- Projects Start -->
+    {% include 'components/projects.html' %}
+    <!-- Projects End -->
+
+
+    <!-- Quote Start -->
+    {% include 'components/quotes.html' %}
+    <!-- Quote End -->
+
+
+    <!-- Team Start -->
+
+    <!-- Team End -->
+
+
+    <!-- Testimonial Start -->
+    {% include 'components/testimonials.html' %}
+
+
+{% endblock %}
+    <!-- Testimonial End -->

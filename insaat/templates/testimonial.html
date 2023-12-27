@@ -1,0 +1,27 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Referanslar | SADE MERMER {% endblock %}
+{% load static %}
+{% block content %}
+
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header py-5 mb-5">
+        <div class="container py-5">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">Referanslar</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a class="text-white" href="#">Anasayfa</a></li>
+                    <li class="breadcrumb-item" style="color: white;">Sayfalar</li>
+                    <li class="breadcrumb-item text-white active" aria-current="page"><a href="{% url 'testimonial' %}">Referanslar</a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- Testimonial Start -->
+    {% include 'components/testimonials.html' %}
+    <!-- Testimonial End -->
+
+{% endblock %}

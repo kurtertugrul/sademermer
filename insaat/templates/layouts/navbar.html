@@ -1,0 +1,39 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
+    <a href="{% url 'index' %}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+        <!-- <img src="{% static 'img/logo1.png' %}" alt="Logo"> -->
+        <h2 class="m-0 text-primary">Sade Mermer</h2>
+    </a>
+    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <a href="{% url 'index' %}" class="nav-item nav-link {% if request.path == '/' %}active{% endif %}">Anasayfa</a>
+            <a href="{% url 'about' %}" class="nav-item nav-link {% if request.path == '/about' %}active{% endif %}">Hakkımızda</a>
+            <a href="{% url 'service' %}" class="nav-item nav-link {% if request.path == '/service' %}active{% endif %}">Servisler</a>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Kataloglar</a>
+                <div class="dropdown-menu fade-up m-0">
+                    <a href="{% url 'catalog_granite' %}" class="dropdown-item {% if request.path == 'catalog_granite' %}active{% endif %}">Granit Döşeme</a>
+                    <a href="{% url 'catalog_granite_kitchen' %}" class="dropdown-item {% if request.path == 'catalog_granite_kitchen' %}active{% endif %}">Granit Tezgahları</a>
+                    <a href="{% url 'catalog_belenco' %}" class="dropdown-item {% if request.path == 'catalog_belenco' %}active{% endif %}">Belenco Tezgahları</a>
+                    <a href="{% url 'catalog_cimstone' %}" class="dropdown-item {% if request.path == 'catalog_cimstone' %}active{% endif %}">Çimstone Tezgahları</a>
+                    <a href="{% url 'catalog_calisco' %}" class="dropdown-item {% if request.path == 'catalog_calisco' %}active{% endif %}">Calisco Tezgahları</a>
+                    <a href="{% url 'catalog_marble' %}" class="dropdown-item {% if request.path == 'catalog_marble' %}active{% endif %}">Mermer Tezgahları</a>
+                </div>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Sayfalar</a>
+                <div class="dropdown-menu fade-up m-0">
+                    <a href="{% url 'project' %}" class="dropdown-item {% if request.path == '/project' %}active{% endif %}">Projeler</a>
+                    <a href="{% url 'feature' %}" class="dropdown-item {% if request.path == '/feature' %}active{% endif %}">Neden Biz?</a>
+                    <a href="{% url 'freequote' %}" class="dropdown-item {% if request.path == '/freequote' %}active{% endif %}">Fiyat Teklifi</a>
+                    <a href="{% url 'testimonial' %}" class="dropdown-item {% if request.path == '/testimonial' %}active{% endif %}">Referanslar</a>
+                </div>
+            </div>
+            <a href="{% url 'contact' %}" class="nav-item nav-link {% if request.path == '/contact' %}active{% endif %}">Bize Ulaşın</a>
+        </div>
+        <!-- <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Get A Quote<i class="fa fa-arrow-right ms-3"></i></a> -->
+    </div>
+</nav>

@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'insaat',
     'schema_graph',
     'easyaudit',
-    'catalog',    
+    'urunler',
     
 ]
 

@@ -5,7 +5,6 @@ from ckeditor.fields import RichTextField
 
 
 
-
 class Communicate(models.Model):
     phone_number = models.CharField(null=True, blank=True, max_length=100)
     address = models.CharField(null=True, blank=True, max_length=100)

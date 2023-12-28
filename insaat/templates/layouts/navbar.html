@@ -13,16 +13,22 @@
             <a href="{% url 'about' %}" class="nav-item nav-link {% if request.path == '/about' %}active{% endif %}">Hakkımızda</a>
             <a href="{% url 'service' %}" class="nav-item nav-link {% if request.path == '/service' %}active{% endif %}">Servisler</a>
             <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Kataloglar</a>
+                <a href="{% url 'category' %}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Tezgahlar</a>
                 <div class="dropdown-menu fade-up m-0">
-                    <a href="{% url 'catalog_granite' %}" class="dropdown-item {% if request.path == 'catalog_granite' %}active{% endif %}">Granit Döşeme</a>
-                    <a href="{% url 'catalog_granite_kitchen' %}" class="dropdown-item {% if request.path == 'catalog_granite_kitchen' %}active{% endif %}">Granit Tezgahları</a>
-                    <a href="{% url 'catalog_belenco' %}" class="dropdown-item {% if request.path == 'catalog_belenco' %}active{% endif %}">Belenco Tezgahları</a>
-                    <a href="{% url 'catalog_cimstone' %}" class="dropdown-item {% if request.path == 'catalog_cimstone' %}active{% endif %}">Çimstone Tezgahları</a>
-                    <a href="{% url 'catalog_calisco' %}" class="dropdown-item {% if request.path == 'catalog_calisco' %}active{% endif %}">Calisco Tezgahları</a>
-                    <a href="{% url 'catalog_marble' %}" class="dropdown-item {% if request.path == 'catalog_marble' %}active{% endif %}">Mermer Tezgahları</a>
+                    {% for category in categories %}
+                        <a href="{% url 'category' %}?category_id={{ category.id }}" class="dropdown-item">{{ category.name }}</a>
+                    {% endfor %}
                 </div>
             </div>
+            
+            <!-- <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Ürünler</a>
+                <div class="dropdown-menu fade-up m-0">
+                    {% for product in products %}
+                        <a href="{% url 'product' pk=product.id %}" class="dropdown-item">{{ product.name }}</a>
+                    {% endfor %}
+                </div>
+            </div> -->
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Sayfalar</a>
                 <div class="dropdown-menu fade-up m-0">

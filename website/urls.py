@@ -11,7 +11,7 @@ from schema_graph.views import Schema
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('insaat.urls')),
-    path('catalog/', include('catalog.urls')),
+    path('urunler/', include('urunler.urls')),
     path("schema/", Schema.as_view()),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

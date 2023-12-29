@@ -20,6 +20,18 @@
                     {% endfor %}
                 </div>
             </div>
+
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Döşemeler</a>
+                <div class="dropdown-menu fade-up m-0">
+                    {% for category in floor_categories %}
+                        <a href="{% url 'category_floor' %}?category_id={{ category.id }}" class="dropdown-item {% if category == selected_category %}active{% endif %}">{{ category.name }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+
+
+
             
             <!-- <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Ürünler</a>

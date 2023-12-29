@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 from django.utils.safestring import mark_safe
-from .models import Category, Product
+from .models import Category, Product, CatFloor, Floor
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -20,21 +20,21 @@ class ProductAdmin(admin.ModelAdmin):
     image_display.short_description = 'Image'
     
     
-# @admin.register(CatFloor)
-# class CatFloorAdmin(admin.ModelAdmin):
-#     list_display = ('name',)
-#     search_fields = ('name',)
+@admin.register(CatFloor)
+class CatFloorAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ('name',)
 
-# @admin.register(Floor)
-# class FloorAdmin(admin.ModelAdmin):
-#     list_display = ('name', 'category', 'image_display',)
-#     list_filter = ('category',)
-#     search_fields = ('name', 'category__name',)
+@admin.register(Floor)
+class FloorAdmin(admin.ModelAdmin):
+    list_display = ('name', 'category', 'image_display',)
+    list_filter = ('category',)
+    search_fields = ('name', 'category__name',)
 
-#     def image_display(self, obj):
-#         return mark_safe(f'<img src="{obj.image.url}" width="50" height="50" />')
+    def image_display(self, obj):
+        return mark_safe(f'<img src="{obj.image.url}" width="50" height="50" />')
 
-#     image_display.short_description = 'Image'
+    image_display.short_description = 'Image'
     
 
 

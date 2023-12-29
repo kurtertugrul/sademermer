@@ -3,7 +3,7 @@ from .models import Communicate, SlideImage, ServiceImage, ProjectImage, Testimo
 from django.http import HttpResponse
 from django.http import HttpResponseNotFound
 
-from urunler.models import Product, Category
+from urunler.models import Product, Category, CatFloor
 from urunler.views import Category, Product
 
 categories = Category.objects.all()
@@ -13,7 +13,7 @@ products = Product.objects.all()
 # floor = Floor.objects.all()
 
 
-
+floor_categories = CatFloor.objects.all()
 communication_info = Communicate.objects.first()
 slide_images = SlideImage.objects.all()
 
@@ -39,6 +39,7 @@ def index(request):
                                           'quote': quote,
                                           'categories': categories,
                                           'products': products,
+                                          'floor_categories': floor_categories,
                                         #   'cat_floor': cat_floor,
                                         #   'floor': floor,
                                           
@@ -57,6 +58,7 @@ def about(request):
                                           'why_us': wyh_us,
                                           'categories': categories,
                                           'products': products,
+                                          'floor_categories': floor_categories,
                                           })
 
 def service(request):
@@ -70,7 +72,9 @@ def service(request):
                                             "logo_images": logo_images,
                                             'quote': quote,
                                             'categories': categories,
-                                            'products': products,})
+                                            'products': products,
+                                            'floor_categories': floor_categories,
+                                            })
 
 def project(request):
     project_images = ProjectImage.objects.all()
@@ -79,7 +83,8 @@ def project(request):
                                             'project_images': project_images,
                                             "logo_images": logo_images,
                                             'categories': categories,
-                                            'products': products,})
+                                            'products': products,
+                                            'floor_categories': floor_categories,})
 
 def feature(request):
     logo_images = Logo.objects.all()
@@ -89,7 +94,7 @@ def feature(request):
                                             'why_us': wyh_us,
                                             'categories': categories,
                                             'products': products,
-                                            
+                                            'floor_categories': floor_categories,
                                             })
 
 def freequote(request):
@@ -99,7 +104,8 @@ def freequote(request):
                                               "logo_images": logo_images,
                                               'quote': quote,
                                             'categories': categories,
-                                            'products': products,})
+                                            'products': products,
+                                            'floor_categories': floor_categories,})
 
 
 
@@ -110,7 +116,8 @@ def testimonial(request):
                                                 'testimonials': testimonials,
                                                 "logo_images": logo_images,
                                                 'categories': categories,
-                                                'products': products,})
+                                                'products': products,
+                                                'floor_categories': floor_categories,})
 
 
 def contact(request):
@@ -119,6 +126,7 @@ def contact(request):
                                             "logo_images": logo_images,
                                             'categories': categories,
                                             'products': products,
+                                            'floor_categories': floor_categories,   
                                             })
     
 def error(request, exception):

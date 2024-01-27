@@ -40,15 +40,12 @@
                             </div> -->
                             <a class="btn btn-primary w-100 py-3" href="tel: {{ team.phone }}"><i class="fa fa-phone"></i> Telefon</a>
                             <a class="btn btn-primary w-100 py-3" href="mailto:ertugru64@gmail.com?subject=Size%20Nas%C4%B1l%20Yard%C4%B1mc%C4%B1%20Olabiliriz%3F&body=Ne%20Yapt%C4%B1rmak%20%C4%B0stiyorsunuz%3F"><i class="fa fa-envelope"></i> Mail</a>
+                            <a class="btn btn-primary w-100 py-3" href="https://wa.me/905303822115?text=dalgamotor" target="_blank"><i class="fas fa-whatsapp"></i> Mail</a>
                         </div>
                     </form>
                 </div>
             </div>
-            <div class="col-lg-6 pe-lg-0" style="min-height: 400px;">
-                <div class="position-relative h-100">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d444.63342582641326!2d29.082032885584884!3d40.21655059982545!3m2!1i1024!2i768!4f13.1!5e1!3m2!1str!2str!4v1702457329155!5m2!1str!2str" width="700" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>            
-                </div>
-            </div>
+            {% include 'components/contact/map.html' %}
         </div>    
     </div>
 </div>

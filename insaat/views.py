@@ -5,6 +5,7 @@ from django.http import HttpResponseNotFound
 
 from urunler.models import Product, Category, CatFloor
 from urunler.views import Category, Product
+import folium
 
 categories = Category.objects.all()
 products = Product.objects.all()
@@ -29,7 +30,7 @@ def index(request):
     about_text = AboutText.objects.first()
     wyh_us = WhyUs.objects.first()
     
-    data = {
+    context = {
             'communication_info': communication_info,
             'slide_images': slide_images,
             'service_images': service_images,
@@ -46,7 +47,7 @@ def index(request):
             # 'floor': floor,                                     
         }
     
-    return render(request, 'index.html', data)
+    return render(request, 'index.html', context)
 
 
 
@@ -56,7 +57,7 @@ def about(request):
     about_text = AboutText.objects.first()
     wyh_us = WhyUs.objects.get()
     
-    data = {
+    context = {
             'communication_info': communication_info,
             'logo_images': logo_images,
             'about_text': about_text,
@@ -66,7 +67,7 @@ def about(request):
             'floor_categories': floor_categories,
         }
     
-    return render(request, "about.html", data)
+    return render(request, "about.html", context)
 
 def service(request):
     service_images = ServiceImage.objects.all()
@@ -74,7 +75,7 @@ def service(request):
     logo_images = Logo.objects.all()
     quote = FreeQuote.objects.get()
     
-    data = {
+    context = {
             'communication_info': communication_info,
             'service_images': service_images,
             'testimonials': testimonials,
@@ -83,54 +84,54 @@ def service(request):
             'categories': categories,
             'products': products,
             'floor_categories': floor_categories,
-            }
+        }
     
-    return render(request, "service.html", data)
+    return render(request, "service.html", context)
 
 def project(request):
     project_images = ProjectImage.objects.all()
     logo_images = Logo.objects.all()
     
-    data = {
+    context = {
             'communication_info': communication_info,
             'project_images': project_images,
             'logo_images': logo_images,
             'categories': categories,
             'products': products,
             'floor_categories': floor_categories,
-            }
+        }
     
-    return render(request, "project.html", data)
+    return render(request, "project.html", context)
 
 def feature(request):
     logo_images = Logo.objects.all()
     wyh_us = WhyUs.objects.get()
     
-    data = {
+    context = {
             'communication_info': communication_info,
             'logo_images': logo_images,
             'why_us': wyh_us,
             'categories': categories,
             'products': products,
             'floor_categories': floor_categories,
-            }
+        }
     
-    return render(request, "feature.html", data)
+    return render(request, "feature.html", context)
 
 def freequote(request):
     logo_images = Logo.objects.all()
     quote = FreeQuote.objects.get()
     
-    data = {
+    context = {
             'communication_info': communication_info,
             'logo_images': logo_images,
             'quote': quote,
             'categories': categories,
             'products': products,
             'floor_categories': floor_categories,
-            }
+        }
     
-    return render(request, "freequote.html", data)
+    return render(request, "freequote.html", context)
 
 
 
@@ -138,45 +139,62 @@ def testimonial(request):
     testimonials = Testimonial.objects.all()
     logo_images = Logo.objects.all()
     
-    data = {
+    context = {
             'communication_info': communication_info,
             'testimonials': testimonials,
             'logo_images': logo_images,
             'categories': categories,
             'products': products,
             'floor_categories': floor_categories,
-            }
+        }
     
-    return render(request, "testimonial.html", data)
+    return render(request, "testimonial.html", context)
 
 
 def contact(request):
     logo_images = Logo.objects.all()
     
-    data = {
+    context = {
             'communication_info': communication_info,
             'logo_images': logo_images,
             'categories': categories,
             'products': products,
             'floor_categories': floor_categories,   
-            }
+        }
     
-    return render(request, "contact.html", data)
+    return render(request, "contact.html", context)
     
 def error(request, exception):
     logo_images = Logo.objects.all()
     
-    data = {
+    context = {
             'communication_info': communication_info,
             'logo_images': logo_images
-            }
+        }
     
-    return render(request, "error.html", data, status=404 )
+    return render(request, "error.html", context, status=404 )
     
 
 
-
-
+def show_location(request): 
+    #! koordinat bilgilerini daha sonra guncelleyebilmek icin model olusturup admin paneline kayit edilecek
+    latitude = 40.1956
+    longitude = 29.0601
+    
+    m = folium.Map(location=[latitude, longitude], width='50%', height='50%', zoom_start=13)
+    
+    folium.Marker([latitude, longitude], popup='Bursa').add_to(m)
+    
+    m = m._repr_html_()
+    
+    context = {
+        # 'map': m,
+        'latitude': latitude,
+        'longitude': longitude, 
+    }
+    
+    return render(request, "components/contact/map.html", context)
+    
 
 
 

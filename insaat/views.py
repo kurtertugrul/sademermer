@@ -6,6 +6,7 @@ from django.http import HttpResponseNotFound
 from urunler.models import Product, Category, CatFloor
 from urunler.views import Category, Product
 import folium
+from folium.plugins import FastMarkerCluster
 
 categories = Category.objects.all()
 products = Product.objects.all()

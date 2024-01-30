@@ -1,0 +1,52 @@
+
+{% load static %}
+
+<div class="container-fluid bg-light overflow-hidden px-lg-0" style="margin: 6rem 0;">
+    <div class="container contact px-lg-0">
+        <div class="row g-0 mx-lg-0">
+            <div class="col-lg-6 contact-text py-5 wow fadeIn" data-wow-delay="0.5s">
+                <div class="p-lg-5 ps-lg-0">
+                    <div class="text-start">
+                        <h1 class="display-5 mb-4">Bize Ulaşın
+                    </div>
+                    <p class="mb-4">{{contact_text.text|safe}}</p>
+                    <form>
+                        <div class="row g-3">
+                            <!-- <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                    <label for="name">Your Name</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                    <label for="email">Your Email</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="subject" placeholder="Subject">
+                                    <label for="subject">Subject</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
+                                    <label for="message">Message</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
+                            </div> -->
+                            <a class="btn btn-primary w-100 py-3" href="tel: {{ team.phone }}"><i class="fa fa-phone"></i> Telefon</a>
+                            <a class="btn btn-primary w-100 py-3" href="mailto:ertugru64@gmail.com?subject=Size%20Nas%C4%B1l%20Yard%C4%B1mc%C4%B1%20Olabiliriz%3F&body=Ne%20Yapt%C4%B1rmak%20%C4%B0stiyorsunuz%3F"><i class="fa fa-envelope"></i> Mail</a>
+                            <a class="btn btn-primary w-100 py-3" href="https://wa.me/905303822115?text=dalgamotor" target="_blank"><i class="fab fa-whatsapp"></i> Whatsapp</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {% include 'components/contact/map.html' %}
+        </div>    
+    </div>
+</div>

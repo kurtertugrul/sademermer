@@ -1,0 +1,64 @@
+{% load static %}
+
+<!-- Ekranın üst kısmında modal içeriğini göstermek için gerekli HTML yapısı -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="imageModalLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="imageGallery" class="carousel slide">
+          <div class="carousel-inner">
+          </div>
+          <a class="carousel-control-prev" href="#imageGallery" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#imageGallery" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </a>
+        </div>
+        <div id="imageDescription" class="mt-3"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center">
+            <h1 class="display-5 mb-5">Hizmetlerimiz</h1>
+        </div>
+        <div class="row g-4 portfolio-container">
+            {% for image in service_images %}
+                <div class="col-lg-4 col-md-6 portfolio-item" data-wow-delay="{{ forloop.counter|divisibleby:2|yesno:'0.1s,0.3s' }}">
+                  <div class="rounded overflow-hidden">
+                    <div class="position-relative overflow-hidden">
+                        <img class="img-fluid w-100" src="{{ image.image.url }}" alt="">
+                        <div class="portfolio-overlay">
+                          <a class="btn btn-square btn-outline-light mx-1" href="{{ image.image.url }}" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                        </div>
+                      </div>
+                        <div class="border border-5 border-light border-top-0 p-4">
+                            <h4 class="text-primary fw-medium mb-2">{{ image.title }}</h4>
+                            <p class="lh-base mb-0">{{ image.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+  
+  
+    
+    
+
+
+
+
+

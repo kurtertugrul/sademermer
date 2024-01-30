@@ -1,0 +1,57 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
+    <a href="{% url 'index' %}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+        <!-- <img src="{% static 'img/logo1.png' %}" alt="Logo"> -->
+        <h2 class="m-0 text-primary">Sade Mermer</h2>
+    </a>
+    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <a href="{% url 'index' %}" class="nav-item nav-link px-2 {% if request.path == '/' %}active{% endif %}">Anasayfa</a>
+            <a href="{% url 'about' %}" class="nav-item nav-link px-2 {% if request.path == '/about' %}active{% endif %}">Hakkımızda</a>
+            <a href="{% url 'service' %}" class="nav-item nav-link px-2 {% if request.path == '/service' %}active{% endif %}">Servisler</a>
+            <div class="nav-item dropdown">
+                <a href="{% url 'category' %}" class="nav-link dropdown-toggle px-2" data-bs-toggle="dropdown">Tezgahlar</a>
+                <div class="dropdown-menu fade-up m-0 px-2">
+                    {% for category in categories %}
+                        <a href="{% url 'category' %}?category_id={{ category.id }}" class="dropdown-item">{{ category.name }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle px-2" data-bs-toggle="dropdown">Döşemeler</a>
+                <div class="dropdown-menu fade-up m-0 px-2">
+                    {% for category in floor_categories %}
+                        <a href="{% url 'category_floor' %}?category_id={{ category.id }}" class="dropdown-item {% if category == selected_category %}active{% endif %}">{{ category.name }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+
+
+
+            
+            <!-- <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Ürünler</a>
+                <div class="dropdown-menu fade-up m-0">
+                    {% for product in products %}
+                        <a href="{% url 'product' pk=product.id %}" class="dropdown-item">{{ product.name }}</a>
+                    {% endfor %}
+                </div>
+            </div> -->
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle px-2" data-bs-toggle="dropdown">Sayfalar</a>
+                <div class="dropdown-menu fade-up m-0 px-2">
+                    <a href="{% url 'project' %}" class="dropdown-item {% if request.path == '/project' %}active{% endif %}">Projeler</a>
+                    <a href="{% url 'feature' %}" class="dropdown-item {% if request.path == '/feature' %}active{% endif %}">Neden Biz?</a>
+                    <a href="{% url 'freequote' %}" class="dropdown-item {% if request.path == '/freequote' %}active{% endif %}">Fiyat Teklifi</a>
+                    <a href="{% url 'testimonial' %}" class="dropdown-item {% if request.path == '/testimonial' %}active{% endif %}">Referanslar</a>
+                </div>
+            </div>
+            <a href="{% url 'contact' %}" class="nav-item nav-link px-2 {% if request.path == '/contact' %}active{% endif %}">Bize Ulaşın</a>
+        </div>
+        <!-- <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Get A Quote<i class="fa fa-arrow-right ms-3"></i></a> -->
+    </div>
+</nav>

@@ -9,12 +9,12 @@ def category(request):
     categories = Category.objects.all()
     products = Product.objects.all()
     
-    selected_category_id = request.GET.get('category_id')
+    selected_category_name = request.GET.get('kategori')
     
     # If a category ID is provided, fetch the category object
     selected_category = None
-    if selected_category_id:
-        selected_category = get_object_or_404(Category, id=selected_category_id)
+    if selected_category_name:
+        selected_category = get_object_or_404(Category, name=selected_category_name)
     
     return render(request, 'stand.html', {'categories': categories,
                                           'products': products,
@@ -29,12 +29,12 @@ categories = Category.objects.all()
 def category_floor(request):
     floor_categories = CatFloor.objects.all()
     floors = Floor.objects.all()
-    selected_category_id = request.GET.get('category_id')
+    selected_category_name = request.GET.get('kategori')
 
     # Eğer bir kategori ID'si sağlanıyorsa, ilgili kategori objesini al
     selected_category = None
-    if selected_category_id:
-        selected_category = get_object_or_404(CatFloor, id=selected_category_id)
+    if selected_category_name:
+        selected_category = get_object_or_404(CatFloor, name=selected_category_name)
 
     return render(request, 'floor.html', {'floor_categories': floor_categories,
                                            'floors': floors,

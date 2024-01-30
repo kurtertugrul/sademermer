@@ -16,7 +16,7 @@
                 <a href="{% url 'category' %}" class="nav-link dropdown-toggle px-2" data-bs-toggle="dropdown">Tezgahlar</a>
                 <div class="dropdown-menu fade-up m-0 px-2">
                     {% for category in categories %}
-                        <a href="{% url 'category' %}?category_id={{ category.id }}" class="dropdown-item">{{ category.name }}</a>
+                        <a href="{% url 'category' %}?kategori={{ category.name }}" class="dropdown-item">{{ category.name }}</a>
                     {% endfor %}
                 </div>
             </div>
@@ -25,7 +25,7 @@
                 <a href="#" class="nav-link dropdown-toggle px-2" data-bs-toggle="dropdown">Döşemeler</a>
                 <div class="dropdown-menu fade-up m-0 px-2">
                     {% for category in floor_categories %}
-                        <a href="{% url 'category_floor' %}?category_id={{ category.id }}" class="dropdown-item {% if category == selected_category %}active{% endif %}">{{ category.name }}</a>
+                        <a href="{% url 'category_floor' %}?kategori={{ category.name }}" class="dropdown-item {% if category == selected_category %}active{% endif %}">{{ category.name }}</a>
                     {% endfor %}
                 </div>
             </div>

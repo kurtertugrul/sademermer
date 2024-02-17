@@ -14,6 +14,7 @@ urlpatterns = [
     path('urunler/', include('urunler.urls')),
     path("schema/", Schema.as_view()),
 
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
+        + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 handler404 = 'insaat.views.error'
